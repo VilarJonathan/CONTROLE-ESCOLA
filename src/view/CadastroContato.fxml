@@ -14,7 +14,7 @@
       <Label layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="33.0" text="Nome" />
       <TextField fx:id="txtNome" layoutX="58.0" layoutY="15.0" prefHeight="25.0" prefWidth="171.0" />
       <Label layoutX="245.0" layoutY="19.0" text="Telefone" />
-      <TextField layoutX="297.0" layoutY="15.0" prefHeight="25.0" prefWidth="135.0" />
+      <TextField fx:id="txtTelefone" layoutX="297.0" layoutY="15.0" prefHeight="25.0" prefWidth="135.0" />
       <Label layoutX="17.0" layoutY="61.0" text="Curso" />
       <ComboBox fx:id="cbCursos" layoutX="58.0" layoutY="57.0" prefWidth="150.0" />
       <TextArea layoutX="17.0" layoutY="148.0" prefHeight="154.0" prefWidth="345.0" wrapText="true" />
@@ -22,7 +22,7 @@
       <ComboBox layoutX="297.0" layoutY="57.0" prefHeight="25.0" prefWidth="135.0" />
       <Label layoutX="246.0" layoutY="61.0" text="Situação" />
       <CheckBox fx:id="checkRetorno" layoutX="22.0" layoutY="98.0" mnemonicParsing="false" text="Retornar Contato" />
-      <DatePicker layoutX="297.0" layoutY="94.0" prefHeight="25.0" prefWidth="135.0" />
+      <DatePicker fx:id="dataDeRetorno" layoutX="297.0" layoutY="94.0" prefHeight="25.0" prefWidth="135.0" />
       <Label layoutX="204.0" layoutY="98.0" text="Data de retorno" />
       <Button layoutX="32.0" layoutY="342.0" mnemonicParsing="false" text="SALVAR" />
       <Button layoutX="190.0" layoutY="342.0" mnemonicParsing="false" text="LIMPAR" />
