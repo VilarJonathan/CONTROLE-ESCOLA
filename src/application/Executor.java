@@ -14,19 +14,19 @@ import jeanderson.controller.control.ControlStage;
  *
  * @author Jonathan Vilar
  */
-public class Executor extends Application{
+public class Executor extends Application {
+
     public static void main(String[] args) {
         launch(args);
     }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ControlStage<HomeController>
-                controlHome= ControlStage.newBuilder()
+        ControlStage<HomeController> controlHome = ControlStage.newBuilder()
                 .addClassController(new HomeController())
                 .addNameFromFXML("Home")
                 .addTitleStage("Controle de Escola").build();
         controlHome.show();
     }
-    
-    
+
 }

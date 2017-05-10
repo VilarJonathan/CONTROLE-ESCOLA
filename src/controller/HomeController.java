@@ -23,10 +23,7 @@ public class HomeController extends Inicializador {
             this.telaCadastro = ControlStage.newBuilder()
                     .addClassController(new CadastroContatoController())
                     .addNameFromFXML("CadastroContato").build();
-            
-            
-            
-            
+
         } catch (Exception ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -37,7 +34,7 @@ public class HomeController extends Inicializador {
     public void chamarTelaCadastroContato() {
         try {
             telaCadastro.show();
-            
+
         } catch (Exception ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
