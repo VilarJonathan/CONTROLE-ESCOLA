@@ -22,6 +22,7 @@ public class HomeController extends Inicializador {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             this.telaCadastro = ControlStage.newBuilder()
+                    .addClassController(new CadastroContatoController())
                     .addNameFromFXML("CadastroContato").build();
 
         } catch (Exception ex) {
