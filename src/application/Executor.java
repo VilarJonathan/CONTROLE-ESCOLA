@@ -9,6 +9,7 @@ import controller.HomeController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import jeanderson.controller.control.ControlStage;
+import jeanderson.controller.control.ControlStageBuilder;
 
 /**
  *
@@ -22,10 +23,17 @@ public class Executor extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ControlStage<HomeController> controlHome = ControlStage.newBuilder()
+        //utilizamos para o instanciamento a Classe ControlStageBuilder
+        ControlStage<HomeController> controlHome = new ControlStageBuilder<>()
                 .addClassController(new HomeController())
+                //aqui passamos o nome do arquivo FXML que será carregado, podemos passar também sua URL
                 .addNameFromFXML("Home")
-                .addTitleStage("Controle de Escola").build();
+                //adicionamos um titulo a nossa Tela
+                .addTitleStage("Controle de Escola")
+                //o build constroi a instancia , retornando um objeto todo configurado da Classe ControlStage.                
+                .build();
+        
+        //este método faz a chamada da tela.
         controlHome.show();
     }
 
