@@ -31,7 +31,7 @@ public class Log {
      * exibi um Dialog informando o erro.
      *
      * @param className Nome da Classe de Exceção.
-     * @param methodName Nome do método ou código onde ocorreu a exception.
+     * @param whereException Nome do método ou código onde ocorreu a exception.
      * @param ex Exceção lançada.
      */
     public static void salvaLogger(String className, String whereException, Exception ex) {
