@@ -46,42 +46,42 @@ public class Contato implements Serializable {
     public Integer getId() {
         return this.id.get();
     }
-    @Column(name = "nome")
+    @Column(name = "nome", length = 40, nullable = false)
     public String getNome() {
         return nome.get();
     }
-    @Column(name = "telefone")
+    @Column(name = "telefone", length = 20)
     public String getTelefone() {
         return telefone.get();
     }
-    @Column(name = "observacao")
+    @Column(name = "observacao", columnDefinition = "text")
     public String getObservacao() {
         return observacao.get();
     }
     
     @Column(name = "data_retorno")
-    public LocalDate getData_retorno() {
+    public LocalDate getDataRetorno() {
         return data_retorno;
     }
     @OneToOne()
     @JoinColumn(name = "curso_id")
-    public Curso getCurso_pretendido() {
+    public Curso getCursoPretendido() {
         return curso_pretendido;
     }
     
-    public IntegerProperty getIdProperty() {
+    public IntegerProperty idProperty() {
         return id;
     }
     
-    public StringProperty getNomeProperty() {
+    public StringProperty nomeProperty() {
         return nome;
     }
     
-    public StringProperty getTelefoneProperty() {
+    public StringProperty telefoneProperty() {
         return telefone;
     }
     
-    public StringProperty getObservacaoProperty() {
+    public StringProperty observacaoProperty() {
         return observacao;
     }
     
@@ -99,5 +99,13 @@ public class Contato implements Serializable {
 
     public void setObservacao(String observacao) {
         this.observacao.set(observacao);
+    }
+    
+    public void setCursoPretendido(Curso curso){
+        this.curso_pretendido = curso;
+    }
+    
+    public void setDataRetorno(LocalDate data){
+        this.data_retorno = data;
     }
 }

@@ -40,7 +40,7 @@ public class Curso implements Serializable {
         return this.id.get();
     }
     
-    @Column(name = "nome")
+    @Column(name = "nome", length = 60)
     public String getNome(){
         return this.nome.get();
     }
@@ -61,15 +61,15 @@ public class Curso implements Serializable {
         this.carga_horaria.set(carga);
     }
     
-    public IntegerProperty getIdProperty(){
+    public IntegerProperty idProperty(){
         return this.id;
     }
     
-    public IntegerProperty getCargaProperty(){
+    public IntegerProperty cargaProperty(){
         return this.carga_horaria;
     }
     
-    public StringProperty getNomeProperty(){
+    public StringProperty nomeProperty(){
         return this.nome;
     }
 }
