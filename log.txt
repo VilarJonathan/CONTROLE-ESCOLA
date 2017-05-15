@@ -1,0 +1,25 @@
+Ocorreu uma exceção na data: 15/05/2017 ás 16:46
+Na Classe: controller.HomeController
+Motivo: Cannot set modality once stage has been set visible
+Onde: chamarTelaCadastroCurso()
+
+Ocorreu uma exceção na data: 15/05/2017 ás 19:43
+Na Classe: controller.HomeController
+Motivo: Não foi encontrado nenhum ControlStage que tenha como chave de identificação a classe: class controller.HomeController
+Onde: initialize()
+
+Ocorreu uma exceção na data: 15/05/2017 ás 19:50
+Na Classe: controller.HomeController
+Motivo: Não foi encontrado nenhum ControlStage que tenha como chave de identificação a classe: class controller.HomeController
+Onde: initialize()
+
+Ocorreu uma exceção na data: 15/05/2017 ás 19:50
+Na Classe: controller.HomeController
+Motivo: null
+Onde: chamarTelaCadastroCurso()
+
+Ocorreu uma exceção na data: 15/05/2017 ás 19:50
+Na Classe: controller.HomeController
+Motivo: null
+Onde: chamarTelaCadastroCurso()
+

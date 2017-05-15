@@ -12,6 +12,7 @@
           <Menu mnemonicParsing="false" text="CADASTRO">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#chamarTelaCadastroContato" text="CONTATOS" />
+                  <MenuItem mnemonicParsing="false" onAction="#chamarTelaCadastroCurso" text="Cursos" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">

@@ -30,11 +30,14 @@ public class Executor extends Application {
                 .addNameFromFXML("Home")
                 //adicionamos um titulo a nossa Tela
                 .addTitleStage("Controle de Escola")
+                //define que este objeto criado seja visto e consultado em qualquer classe atraves do método estatico. getAllSeeControl.
+                .defineAllSee(HomeController.class)
                 //o build constroi a instancia , retornando um objeto todo configurado da Classe ControlStage.                
                 .build();
         
         //este método faz a chamada da tela.
-        controlHome.show();
+        
+        controlHome.show(null);        
     }
 
 }
