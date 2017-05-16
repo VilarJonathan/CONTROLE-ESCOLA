@@ -11,6 +11,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import jeanderson.controller.componentes.Inicializador;
+import model.ConfigHibernateXML;
+import util.xml.HibernateConfig;
 
 /**
  *
@@ -26,6 +28,8 @@ public class ConfiguracoesController extends Inicializador {
     private TextField txtUsuario;
     @FXML
     private PasswordField txtSenha;
+    private HibernateConfig hibernateConfig;
+    private ConfigHibernateXML xml;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
@@ -37,5 +41,13 @@ public class ConfiguracoesController extends Inicializador {
     @FXML
     public void actionCancelar(){
         
+    }
+    
+    /**
+     * Carrega as configuracoes do arquivo xml do hibernate.
+     */
+    public void carregarConfiguracoes(){
+        this.xml = new ConfigHibernateXML();
+        this.hibernateConfig = xml.getConfigXMl();
     }
 }
