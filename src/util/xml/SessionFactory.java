@@ -53,4 +53,20 @@ public class SessionFactory {
         this.listaProperty.stream().filter(property -> property.getName().equals("hibernate.connection.url")).findFirst().get().setValor(url);
     }    
     
+    /**
+     * Método para alterar a configuração da UserName do Property de maneira mais fácil.
+     * @param username 
+     */
+    public void setUsername(String username){
+        this.listaProperty.stream().filter(property -> property.getName().equals("hibernate.connection.username")).findFirst().get().setValor(username);
+    }
+    
+    /**
+     * Método para alterar a configuração da Password do Property de maneira mais fácil.
+     * @param password 
+     */
+    public void setPassword(String password){
+        this.listaProperty.stream().filter(property -> property.getName().equals("hibernate.connection.password")).findFirst().get().setValor(password);
+    }
+    
 }
