@@ -17,7 +17,7 @@
       <Label layoutX="25.0" layoutY="70.0" text="Carga Horaria:" />
       <TextField fx:id="txtNome" layoutX="101.0" layoutY="31.0" prefHeight="25.0" prefWidth="287.0" />
       <TextField fx:id="txtCarga" layoutX="101.0" layoutY="66.0" prefHeight="25.0" prefWidth="76.0" />
-      <Button layoutX="101.0" layoutY="349.0" mnemonicParsing="false" text="Cadastrar" />
+      <Button layoutX="101.0" layoutY="349.0" mnemonicParsing="false" onAction="#actionCadastrar" text="Cadastrar" />
       <Button layoutX="213.0" layoutY="349.0" mnemonicParsing="false" text="Limpar" />
       <Button layoutX="322.0" layoutY="349.0" mnemonicParsing="false" text="Cancelar" />
       <Label layoutX="177.0" layoutY="72.0" text="Horas">
