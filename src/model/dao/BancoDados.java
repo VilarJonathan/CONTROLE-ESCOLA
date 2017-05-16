@@ -5,6 +5,11 @@
  */
 package model.dao;
 
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -31,8 +36,29 @@ public class BancoDados {
             transacao.commit();
             return true;
         } catch (HibernateException ex) {
-            Log.salvaLogger(BancoDados.class.getName(), "salvar()", ex);
+            Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
             return false;
+        } finally {
+            sessao.close();
+            HibernateUtil.getSessionFactory().close();
+        }
+    }
+
+    /**
+     * Retorna uma Lista de todos os dados de uma, ou mais Tabelas.
+     * @param className Informe o nome da Classe que persiste os dados no banco.
+     * @return Uma lista com os dados retornados. Obs: pode ser vazia.
+     */
+    public static ObservableList pegarTodosDados(String className) {
+        Session sessao = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Transaction transacao = sessao.beginTransaction();
+            List lista = sessao.createQuery("FROM " + className.substring(0, 1).toUpperCase().concat(className.substring(1))).list();
+            ObservableList lista_pronta = FXCollections.observableList(lista);
+            return lista_pronta;            
+        } catch (HibernateException ex) {
+            Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
+            return FXCollections.observableArrayList();
         } finally {
             sessao.close();
             HibernateUtil.getSessionFactory().close();
