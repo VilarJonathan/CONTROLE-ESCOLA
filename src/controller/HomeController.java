@@ -1,5 +1,7 @@
 package controller;
 
+import controller.ferramentas.ConfiguracoesController;
+import controller.cadastros.CadastroContatoController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
