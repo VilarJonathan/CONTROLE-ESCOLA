@@ -7,7 +7,6 @@ package util;
 
 import model.Contato;
 import model.Curso;
-import model.interfaces.StringConverter;
 
 /**
  *
@@ -39,7 +38,7 @@ public enum ModelConverters implements StringConverter {
                 public String toString(Contato contato) {
                     return contato.getNome();
                 }
-               
+
                 @Override
                 public Contato fromString(String string) {
                     return null;
