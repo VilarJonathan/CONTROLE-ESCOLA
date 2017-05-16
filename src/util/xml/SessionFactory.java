@@ -42,6 +42,15 @@ public class SessionFactory {
         return listaMapping;
     }
     
-    
+    /**
+     * Método para alterar a configuração da URL do Property de maneira mais fácil.
+     * @param database
+     * @param endereco
+     * @param porta 
+     */
+    public void setUrlConfig(String database, String endereco, String porta){
+        String url = "jdbc:mysql://"+endereco+":"+porta+"/"+database+"?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;connectionCollation=utf8_general_ci";
+        this.listaProperty.stream().filter(property -> property.getName().equals("hibernate.connection.url")).findFirst().get().setValor(url);
+    }    
     
 }
