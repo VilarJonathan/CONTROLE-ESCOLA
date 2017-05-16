@@ -9,6 +9,7 @@ import controller.HomeController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
+import javafx.concurrent.Task;
 import javafx.stage.Stage;
 import jeanderson.controller.control.ControlStage;
 import jeanderson.controller.control.ControlStageBuilder;
@@ -20,15 +21,15 @@ import util.Log;
  * @author Jonathan Vilar
  */
 public class Executor extends Application {
-    
+
     public static void main(String[] args) {
         launch(args);
     }
-    
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         //utilizamos para o instanciamento a Classe ControlStageBuilder
-        ControlStage<HomeController> controlHome = new ControlStageBuilder<>()
+        ControlStage<HomeController> controlHome = new ControlStageBuilder<>(primaryStage)
                 .addClassController(new HomeController())
                 //aqui passamos o nome do arquivo FXML que será carregado, podemos passar também sua URL
                 .addNameFromFXML("Home")
@@ -44,15 +45,19 @@ public class Executor extends Application {
         //devo fazer isso para encerrar o hibernate, se não o programa continua em execução.
         //este método setOnCloseRequest é chamado quando é pedido para fechar a Tela.
         controlHome.getStage().setOnCloseRequest(evento -> {
-            //fecho o hibernate.
-            try {
-                HibernateUtil.getSessionFactory().close();
-            } catch (NoClassDefFoundError ex) {
-                Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
-                Log.salvaLogger(Executor.class.getName(), "start()", new Exception("Houve uma exceção com hibernate. Provável motivo: não há conexão com o banco de dados."));
-                System.exit(0);
-            }
+            //executo de forma paralela, pois percebi q trava um pouco o programa para fechar.
+            Task task = new Task() {
+                @Override
+                protected Object call() throws Exception {
+                    //fecho o hibernate.
+                    HibernateUtil.getSessionFactory().close();
+                    return null;
+                }
+            };
+            Thread t = new Thread(task);
+            t.setDaemon(true);
+            t.start();
         });
     }
-    
+
 }
