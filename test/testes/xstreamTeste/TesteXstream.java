@@ -16,6 +16,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -24,31 +25,14 @@ import java.util.List;
 public class TesteXstream {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         XStream stream = new XStream();
-        stream.processAnnotations(HibernateConfiguracao.class);
-        
-//        SessaoFabrica teste = new SessaoFabrica();
-//        teste.addProprieda(new Propriedade("org.hibernate", "valor1"));
-//        teste.addProprieda(new Propriedade("org.jeanderson", "Valor2"));
-//        System.out.println(stream.toXML(teste));
+        stream.processAnnotations(HibernateConfiguracao.class);        
+
         File arquivo = new File("src/hibernate.cfg.xml");
         InputStream ler = new FileInputStream(arquivo);
         HibernateConfiguracao sessao = (HibernateConfiguracao) stream.fromXML(ler);
-        System.out.println(sessao);
-//            HibernateConfiguracao config = new HibernateConfiguracao();
-//            SessaoFabrica teste = new SessaoFabrica();
-//           teste.addProprieda(new Propriedade("org.hibernate", "valor1"));
-//           teste.addProprieda(new Propriedade("org.jeanderson", "Valor2"));
-//           teste.getMapas().add(new Mapa("classe nome 1"));
-//           config.setSessao(teste);
-//           System.out.println(stream.toXML(config));
-//           List<String> lista = new ArrayList<>();
-//           lista.add(stream.toXML(config));
-//           File arquivo = new File("teste.xml");
-//           if(!arquivo.exists()){
-//               arquivo.createNewFile();
-//           }
-//           Files.write(Paths.get(arquivo.toURI()), lista, StandardOpenOption.WRITE);
-            
+        List<Propriedade> lista_de_property = sessao.getSessao().getLista_de_property();
+        Propriedade p = lista_de_property.stream().filter(propriedade -> propriedade.getNome().equals("hibernate.connection.url")).findFirst().get();
+        System.out.println(p.getNome() + "  " + p.getValor());
     }
     
 }

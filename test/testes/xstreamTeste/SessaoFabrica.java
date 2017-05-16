@@ -32,6 +32,11 @@ public class SessaoFabrica {
         this.lista_de_property.add(pro);
     }
 
+    public List<Propriedade> getLista_de_property() {
+        return lista_de_property;
+    }
+    
+
     @Override
     public String toString() {
         return "SessaoFabrica{" + "lista_de_property=" + lista_de_property + '}';

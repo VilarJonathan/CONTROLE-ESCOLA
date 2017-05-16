@@ -6,7 +6,7 @@
 package testes;
 
 import javafx.collections.ObservableList;
-import model.dao.BancoDados;
+import factory.BancoDados;
 
 /**
  *
