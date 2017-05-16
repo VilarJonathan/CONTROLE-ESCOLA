@@ -10,6 +10,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import jeanderson.controller.control.ControlStage;
 import jeanderson.controller.control.ControlStageBuilder;
+import util.HibernateUtil;
 
 /**
  *
@@ -37,7 +38,13 @@ public class Executor extends Application {
         
         //este método faz a chamada da tela.
         
-        controlHome.show(null);        
+        controlHome.show(null); 
+        //devo fazer isso para encerrar o hibernate, se não o programa continua em execução.
+        //este método setOnCloseRequest é chamado quando é pedido para fechar a Tela.
+        controlHome.getStage().setOnCloseRequest(evento -> {
+            //fecho o hibernate.
+            HibernateUtil.getSessionFactory().close();
+        });
     }
 
 }
