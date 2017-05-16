@@ -29,7 +29,7 @@ public class Log {
     /**
      * Método pega a exceção lançada, e grava em um arquivo de Texto. e também
      * exibi um Dialog informando o erro.
-     *
+     *Obs: Não funciona dentro de uma Thread.
      * @param className Nome da Classe de Exceção.
      * @param whereException Nome do método ou código onde ocorreu a exception.
      * @param ex Exceção lançada.
