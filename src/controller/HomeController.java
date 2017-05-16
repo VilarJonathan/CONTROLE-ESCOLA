@@ -22,7 +22,7 @@ public class HomeController extends Inicializador {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("aconteceu");
+        
         try {
             this.telaCadastro = ControlStage.newBuilder()
                     .addClassController(new CadastroContatoController())
@@ -47,7 +47,8 @@ public class HomeController extends Inicializador {
     public void chamarTelaCadastroContato() {
         try {
             telaCadastro.show(HomeController.class);
-
+            //carrega a lista de cursos.
+            this.telaCadastro.getController().carregarListaDeCursos();
         } catch (Exception ex) {
             //log será salvo em um arquivo txt dentro do projeto
             Log.salvaLogger(this.getClass().getName(),"chamarTelaCadastroContato()", ex);
