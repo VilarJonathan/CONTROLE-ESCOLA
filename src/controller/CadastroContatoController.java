@@ -6,24 +6,23 @@
 package controller;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import jeanderson.controller.componentes.Inicializador;
 import jeanderson.controller.util.MaskFormatter;
 import jeanderson.controller.util.MaskType;
 import model.Curso;
-import model.dao.BancoDados;
-import util.ModelConverters;
+import factory.BancoDados;
+import util.converters.ModelConverters;
+import util.Situacao;
 
 /**
  *
@@ -40,13 +39,19 @@ public class CadastroContatoController extends Inicializador {
     @FXML
     private DatePicker dataDeRetorno;
     @FXML
+    private Label lbDataRetorno;
+    @FXML
     private ComboBox<Curso> cbCursos;
+    @FXML
+    private ComboBox<Situacao> cbSituacao;
     private ObservableList<Curso> lista_de_cursos;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //aqui usamos um enum para informar qual o tipo de conversão para a exibição do comboBox.
         this.cbCursos.setConverter(ModelConverters.CURSO.getConverter());
+       
+       this.cbSituacao.setItems(FXCollections.observableArrayList(Situacao.values()));
         //vou usar uma classe que fiz para formatar o campo Telefone e Data da forma que queremos.
         MaskFormatter formatadorDeCampos = new MaskFormatter();
         formatadorDeCampos.addComponentes(txtTelefone, MaskType.TEL_DIG, true);
@@ -88,4 +93,16 @@ public class CadastroContatoController extends Inicializador {
         t.start();
     }
 
+    @FXML
+    public void actionSalvar(){
+        
+    }
+    /**
+     * método é chamado no evento de marcar o checkBox. se ativar o checkbox ele mostrar outros campos como data de retorno.
+     */
+    @FXML
+    public void actionCheckRetornar(){
+        this.lbDataRetorno.setVisible(this.checkRetorno.isSelected());
+        this.dataDeRetorno.setVisible(this.checkRetorno.isSelected());
+    }
 }
