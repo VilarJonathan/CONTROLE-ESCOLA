@@ -51,7 +51,10 @@ public class ConfigHibernateXML {
         List<String> listaParaGravar = new ArrayList<>();
         listaParaGravar.add(xmlConfig);
         try {
-            Files.write(Paths.get(this.arquivoConfig.toURI()), listaParaGravar, StandardOpenOption.WRITE);
+            if(this.arquivoConfig.exists()){
+                this.arquivoConfig.delete();
+            }
+            Files.write(Paths.get(this.arquivoConfig.toURI()), listaParaGravar, StandardOpenOption.CREATE_NEW);
         } catch (IOException ex) {
             Log.salvaLogger(ConfigHibernateXML.class.getName(),"salvarConfig", ex);
         }
