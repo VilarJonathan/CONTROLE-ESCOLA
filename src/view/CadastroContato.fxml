@@ -19,12 +19,12 @@
       <ComboBox fx:id="cbCursos" layoutX="58.0" layoutY="57.0" prefWidth="150.0" />
       <TextArea layoutX="17.0" layoutY="148.0" prefHeight="154.0" prefWidth="345.0" wrapText="true" />
       <Label layoutX="19.0" layoutY="125.0" text="Obs" />
-      <ComboBox layoutX="297.0" layoutY="57.0" prefHeight="25.0" prefWidth="135.0" />
-      <Label layoutX="246.0" layoutY="61.0" text="Situação" />
-      <CheckBox fx:id="checkRetorno" layoutX="22.0" layoutY="98.0" mnemonicParsing="false" text="Retornar Contato" />
-      <DatePicker fx:id="dataDeRetorno" layoutX="297.0" layoutY="94.0" prefHeight="25.0" prefWidth="135.0" />
-      <Label layoutX="204.0" layoutY="98.0" text="Data de retorno" />
-      <Button layoutX="32.0" layoutY="342.0" mnemonicParsing="false" text="SALVAR" />
+      <ComboBox fx:id="cbSituacao" layoutX="272.0" layoutY="57.0" prefHeight="25.0" prefWidth="161.0" />
+      <Label layoutX="223.0" layoutY="61.0" text="Situação" />
+      <CheckBox fx:id="checkRetorno" layoutX="22.0" layoutY="98.0" mnemonicParsing="false" onAction="#actionCheckRetornar" text="Retornar Contato" />
+      <DatePicker fx:id="dataDeRetorno" layoutX="297.0" layoutY="94.0" prefHeight="25.0" prefWidth="135.0" visible="false" />
+      <Label fx:id="lbDataRetorno" layoutX="204.0" layoutY="98.0" text="Data de retorno" visible="false" />
+      <Button layoutX="32.0" layoutY="342.0" mnemonicParsing="false" onAction="#actionSalvar" text="SALVAR" />
       <Button layoutX="190.0" layoutY="342.0" mnemonicParsing="false" text="LIMPAR" />
       <Button layoutX="339.0" layoutY="342.0" mnemonicParsing="false" text="CANCELAR" />
    </children>
