@@ -15,6 +15,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
 import util.Log;
+import util.StringUtil;
 
 /**
  *
@@ -53,7 +54,7 @@ public class BancoDados {
         Session sessao = HibernateUtil.getSessionFactory().openSession();
         try {
             Transaction transacao = sessao.beginTransaction();
-            List lista = sessao.createQuery("FROM " + className.substring(0, 1).toUpperCase().concat(className.substring(1))).list();
+            List lista = sessao.createQuery("FROM " + StringUtil.toUpperCaseFirst(className)).list();
             ObservableList lista_pronta = FXCollections.observableList(lista);
             return lista_pronta;            
         } catch (HibernateException ex) {
