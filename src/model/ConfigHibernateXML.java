@@ -48,7 +48,12 @@ public class ConfigHibernateXML {
     public void salvarConfig(HibernateConfig config){
         this.hibernateConfig = config;
         String xmlConfig= this.xmlStream.toXML(this.hibernateConfig);
+        //ao passar para xml, ele faz o &amp;amp, entao dar erro, por isto eu removo.
+        xmlConfig = xmlConfig.replace("&amp;amp;", "&amp;");
         List<String> listaParaGravar = new ArrayList<>();
+        System.out.println(xmlConfig);
+        listaParaGravar.add("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+        listaParaGravar.add("<!DOCTYPE hibernate-configuration PUBLIC \"-//Hibernate/Hibernate Configuration DTD 3.0//EN\" \"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd\">");
         listaParaGravar.add(xmlConfig);
         try {
             if(this.arquivoConfig.exists()){
