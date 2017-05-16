@@ -13,11 +13,14 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import util.Situacao;
 
 /**
  *
@@ -33,6 +36,7 @@ public class Contato implements Serializable {
     private StringProperty observacao;
     private LocalDate data_retorno;
     private Curso curso_pretendido;
+    private Situacao situacao;
     
     public Contato() {
         this.id = new SimpleIntegerProperty();
@@ -67,6 +71,11 @@ public class Contato implements Serializable {
     @JoinColumn(name = "curso_id")
     public Curso getCursoPretendido() {
         return curso_pretendido;
+    }
+    @Enumerated(EnumType.STRING)
+    @Column(name = "situacao")
+    public Situacao getSituacao() {
+        return situacao;
     }
     
     public IntegerProperty idProperty() {
@@ -108,4 +117,10 @@ public class Contato implements Serializable {
     public void setDataRetorno(LocalDate data){
         this.data_retorno = data;
     }
+
+    public void setSituacao(Situacao situacao) {
+        this.situacao = situacao;
+    }
+    
+    
 }
