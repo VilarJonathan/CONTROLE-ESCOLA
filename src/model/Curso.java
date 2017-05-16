@@ -49,7 +49,7 @@ public class Curso implements Serializable {
         return this.carga_horaria.get();
     }
     
-    public void setId(int id){
+    protected void setId(int id){
         this.id.set(id);
     }
     

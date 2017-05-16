@@ -85,7 +85,7 @@ public class Contato implements Serializable {
         return observacao;
     }
     
-    public void setId(int id) {
+    protected void setId(int id) {
         this.id.set(id);
     }
 
