@@ -41,7 +41,6 @@ public class BancoDados {
             return false;
         } finally {
             sessao.close();
-            HibernateUtil.getSessionFactory().close();
         }
     }
 
@@ -62,7 +61,6 @@ public class BancoDados {
             return FXCollections.observableArrayList();
         } finally {
             sessao.close();
-            HibernateUtil.getSessionFactory().close();
         }
     }
 }
