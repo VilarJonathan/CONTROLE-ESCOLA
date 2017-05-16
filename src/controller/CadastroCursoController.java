@@ -15,7 +15,7 @@ import jeanderson.controller.util.DialogType;
 import jeanderson.controller.util.MaskFormatter;
 import jeanderson.controller.util.MaskType;
 import model.Curso;
-import model.dao.BancoDados;
+import factory.BancoDados;
 
 /**
  *
