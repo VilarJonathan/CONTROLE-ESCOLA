@@ -81,6 +81,7 @@ public class HomeController extends Inicializador {
     public void chamarTelaConfiguracoes(){
         try {
             this.telaConfiguracao.show(HomeController.class);
+            this.telaConfiguracao.getController().carregarConfiguracoes();
         } catch (Exception ex) {
             Log.salvaLogger(this.getClass().getName(), "chamarTelaConfiguracoes()", ex);
         }
