@@ -35,7 +35,7 @@ public class Log {
      * @param ex Exceção lançada.
      */
     public static void salvaLogger(String className, String whereException, Exception ex) {
-        DialogFX.showMessage("Houve um erro no programa, por favor consulte o log.txt", "Uma exceção lançada", DialogType.ERRO);
+        System.err.println(ex);
         try {
             String dataDoOcorrido = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy 'ás' HH:mm"));
             List<String> msg = new ArrayList<>();
