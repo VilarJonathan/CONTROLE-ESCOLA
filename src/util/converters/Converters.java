@@ -82,7 +82,11 @@ public enum Converters implements StringConverter {
            javafx.util.StringConverter<Situacao> dadosConvertidos = new javafx.util.StringConverter<Situacao>() {
                @Override
                public String toString(Situacao situacao) {
-                   return situacao.toString();
+                   if(situacao != null){
+                       return situacao.toString();
+                   }else{
+                       return "";
+                   }
                }
 
                @Override
