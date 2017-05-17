@@ -2,6 +2,7 @@ package controller;
 
 import controller.ferramentas.ConfiguracoesController;
 import controller.cadastros.CadastroContatoController;
+import controller.registros.AgendaContatosController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -22,6 +23,7 @@ public class HomeController extends Inicializador {
     private ControlStage<CadastroContatoController> telaCadastro;
     private ControlStage<CadastroContatoController> telaCadastroCurso;
     private ControlStage<ConfiguracoesController> telaConfiguracao;
+    private ControlStage<AgendaContatosController> telaAgendaContatos;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -38,6 +40,11 @@ public class HomeController extends Inicializador {
                     .addClassController(new ConfiguracoesController())
                     .addNameFromFXML("Configuracoes")
                     .addTitleStage("Configuração do Banco de Dados")
+                    .build();
+            this.telaAgendaContatos = new ControlStageBuilder<>()
+                    .addClassController(new AgendaContatosController())
+                    .addNameFromFXML("AgendaContatos")
+                    .addTitleStage("Agenda de Contatos")
                     .build();
 
         } catch (Exception ex) {
@@ -84,6 +91,19 @@ public class HomeController extends Inicializador {
         try {
             this.telaConfiguracao.show(HomeController.class);
             this.telaConfiguracao.getController().carregarConfiguracoes();
+        } catch (Exception ex) {
+            Log.salvaLogger(this.getClass().getName(), "chamarTelaConfiguracoes()", ex);
+        }
+    }
+    
+    /**
+     *  Método chama a tela de agenda de contatos.
+     */
+    @FXML
+    public void chamarTelaAgendaContatos(){
+        try {
+            this.telaAgendaContatos.show(HomeController.class);
+            this.telaAgendaContatos.getController().carregarTabela();
         } catch (Exception ex) {
             Log.salvaLogger(this.getClass().getName(), "chamarTelaConfiguracoes()", ex);
         }
