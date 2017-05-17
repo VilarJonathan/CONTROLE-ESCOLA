@@ -13,6 +13,7 @@ import javafx.beans.property.StringProperty;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -34,7 +35,7 @@ public class Curso implements Serializable {
     }
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "curso_id")
     public int getId(){
         return this.id.get();

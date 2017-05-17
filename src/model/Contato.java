@@ -16,6 +16,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -42,10 +43,11 @@ public class Contato implements Serializable {
         this.id = new SimpleIntegerProperty();
         this.nome = new SimpleStringProperty();
         this.telefone = new SimpleStringProperty();
+        this.observacao = new SimpleStringProperty();
     }
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "contato_id")
     public Integer getId() {
         return this.id.get();
