@@ -47,7 +47,7 @@ public class Contato implements Serializable {
     }
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contato_id")
     public Integer getId() {
         return this.id.get();

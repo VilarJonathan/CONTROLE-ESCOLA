@@ -35,7 +35,7 @@ public class Curso implements Serializable {
     }
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "curso_id")
     public int getId(){
         return this.id.get();
