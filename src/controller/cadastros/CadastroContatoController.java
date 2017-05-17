@@ -21,6 +21,8 @@ import jeanderson.controller.util.MaskFormatter;
 import jeanderson.controller.util.MaskType;
 import model.Curso;
 import factory.BancoDados;
+import javafx.scene.control.TextArea;
+import model.Contato;
 import util.converters.ModelConverters;
 import util.Situacao;
 
@@ -44,6 +46,8 @@ public class CadastroContatoController extends Inicializador {
     private ComboBox<Curso> cbCursos;
     @FXML
     private ComboBox<Situacao> cbSituacao;
+    @FXML
+    private TextArea txtObservacao;
     private ObservableList<Curso> lista_de_cursos;
 
     @Override
@@ -95,7 +99,18 @@ public class CadastroContatoController extends Inicializador {
 
     @FXML
     public void actionSalvar(){
-        
+        if(this.verificarCampos()){
+            Contato contato = new Contato();
+            contato.setCursoPretendido(this.cbCursos.getValue());
+            contato.setNome(this.txtNome.getText().trim());
+            contato.setTelefone(this.txtTelefone.getText().trim());
+            contato.setSituacao(this.cbSituacao.getValue());
+            contato.setObservacao(this.txtObservacao.getText());
+            if(this.checkRetorno.isSelected()){
+                contato.setDataRetorno(this.dataDeRetorno.getValue());
+            }
+            BancoDados.salvar(contato);
+        }
     }
     /**
      * método é chamado no evento de marcar o checkBox. se ativar o checkbox ele mostrar outros campos como data de retorno.
@@ -104,5 +119,21 @@ public class CadastroContatoController extends Inicializador {
     public void actionCheckRetornar(){
         this.lbDataRetorno.setVisible(this.checkRetorno.isSelected());
         this.dataDeRetorno.setVisible(this.checkRetorno.isSelected());
+    }
+    
+    private boolean verificarCampos(){
+        if(this.txtNome.getText().trim().isEmpty()){
+            return false;
+        }
+        if(this.txtTelefone.getText().trim().isEmpty()){
+            return false;
+        }
+        if(this.cbCursos.getSelectionModel().getSelectedIndex() == -1){
+            return false;
+        }
+        if(this.cbSituacao.getSelectionModel().getSelectedIndex() == -1){
+            return false;
+        }
+        return true;
     }
 }
