@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="384.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ConfiguracoesController">
+<AnchorPane id="AnchorPane" prefHeight="384.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ferramentas.ConfiguracoesController">
    <children>
       <Label layoutX="118.0" layoutY="14.0" text="Configuração do Banco de dados">
          <font>

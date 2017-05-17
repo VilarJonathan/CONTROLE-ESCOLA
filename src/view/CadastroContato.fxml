@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroContatoController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.cadastros.CadastroContatoController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="33.0" text="Nome" />
       <TextField fx:id="txtNome" layoutX="58.0" layoutY="15.0" prefHeight="25.0" prefWidth="171.0" />
@@ -17,7 +17,7 @@
       <TextField fx:id="txtTelefone" layoutX="297.0" layoutY="15.0" prefHeight="25.0" prefWidth="135.0" />
       <Label layoutX="17.0" layoutY="61.0" text="Curso" />
       <ComboBox fx:id="cbCursos" layoutX="58.0" layoutY="57.0" prefWidth="150.0" />
-      <TextArea layoutX="17.0" layoutY="148.0" prefHeight="154.0" prefWidth="345.0" wrapText="true" />
+      <TextArea fx:id="txtObservacao" layoutX="17.0" layoutY="148.0" prefHeight="154.0" prefWidth="345.0" wrapText="true" />
       <Label layoutX="19.0" layoutY="125.0" text="Obs" />
       <ComboBox fx:id="cbSituacao" layoutX="272.0" layoutY="57.0" prefHeight="25.0" prefWidth="161.0" />
       <Label layoutX="223.0" layoutY="61.0" text="Situação" />
