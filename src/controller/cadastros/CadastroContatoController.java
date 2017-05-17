@@ -23,7 +23,7 @@ import model.Curso;
 import factory.BancoDados;
 import javafx.scene.control.TextArea;
 import model.Contato;
-import util.converters.ModelConverters;
+import util.converters.Converters;
 import util.Situacao;
 
 /**
@@ -53,7 +53,7 @@ public class CadastroContatoController extends Inicializador {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //aqui usamos um enum para informar qual o tipo de conversão para a exibição do comboBox.
-        this.cbCursos.setConverter(ModelConverters.CURSO.getConverter());
+        this.cbCursos.setConverter(Converters.CURSO.getConverter());
        
        this.cbSituacao.setItems(FXCollections.observableArrayList(Situacao.values()));
         //vou usar uma classe que fiz para formatar o campo Telefone e Data da forma que queremos.
