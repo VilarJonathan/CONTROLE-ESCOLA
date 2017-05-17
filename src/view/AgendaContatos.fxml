@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.registros.AgendaContatos">
+   <children>
+      <Label layoutX="378.0" layoutY="14.0" text="Agenda de Contatos">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tabelaContatos" layoutX="14.0" layoutY="120.0" prefHeight="200.0" prefWidth="875.0">
+        <columns>
+          <TableColumn fx:id="tabelaColunaNome" prefWidth="253.0" text="Nome" />
+          <TableColumn fx:id="tabelaColunaTelefone" minWidth="0.0" prefWidth="164.0" text="Telefone" />
+            <TableColumn fx:id="tabelaColunaDataRetorno" prefWidth="148.0" text="Data Retorno" />
+            <TableColumn fx:id="tabelaColunaCurso" prefWidth="169.0" text="Curso" />
+            <TableColumn fx:id="tabelaColunaSituacao" prefWidth="140.0" text="Situação" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

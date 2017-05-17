@@ -9,12 +9,17 @@
    <top>
       <MenuBar prefHeight="46.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="CADASTRO">
+          <Menu mnemonicParsing="false" text="Cadastrar">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#chamarTelaCadastroContato" text="CONTATOS" />
+              <MenuItem mnemonicParsing="false" onAction="#chamarTelaCadastroContato" text="Contatos" />
                   <MenuItem mnemonicParsing="false" onAction="#chamarTelaCadastroCurso" text="Cursos" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Registros">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#chamarTelaAgendaContatos" text="Agenda de Contatos" />
+              </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Ferramentas">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#chamarTelaConfiguracoes" text="Configurar Banco" />
