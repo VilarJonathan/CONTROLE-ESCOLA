@@ -10,7 +10,7 @@ package util;
  * @author Jeanderson
  */
 public enum Situacao {
-    TEM_INTERESSE, SEM_INTERESSE, FAZER_VISITA;
+    TEM_INTERESSE, SEM_INTERESSE, FAZER_VISITA, ENTRAR_CONTATO;
 
     @Override
     public String toString() {
@@ -21,6 +21,8 @@ public enum Situacao {
                 return "Não tem interesse";
             case FAZER_VISITA:
                 return "Vai Fazer uma visita";
+            case ENTRAR_CONTATO:
+                return "Entrar em Contato";
             default:
                 return "";
         }
