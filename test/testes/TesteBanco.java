@@ -14,7 +14,7 @@ import factory.BancoDados;
  */
 public class TesteBanco {
     public static void main(String[] args) {
-        ObservableList pegarTodosDados = BancoDados.pegarTodosDados("curso");
+        ObservableList pegarTodosDados = BancoDados.queryAll("curso");
         System.out.println(pegarTodosDados.isEmpty());
     }
     
