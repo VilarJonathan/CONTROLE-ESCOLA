@@ -87,4 +87,19 @@ public class BancoDados {
             sessao.close();
         }
     }
+    
+    /**
+     * Método que prepara o banco de dados.
+     * @return Informa se o banco inicializou com sucesso!
+     */
+    public static boolean inicializar(){
+        try (Session sessao = HibernateUtil.getSessionFactory().openSession()) {
+            sessao.beginTransaction();
+            sessao.close();
+            return true;
+        }catch(HibernateException ex){
+            Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
 }
