@@ -20,10 +20,11 @@ import util.Log;
  */
 public class HomeController extends Inicializador {
 
-    private ControlStage<CadastroContatoController> telaCadastro;
-    private ControlStage<CadastroContatoController> telaCadastroCurso;
-    private ControlStage<ConfiguracoesController> telaConfiguracao;
-    private ControlStage<AgendaContatosController> telaAgendaContatos;
+    //alteradas para public para outras janelas terem acesso.
+    public ControlStage<CadastroContatoController> telaCadastro;
+    public ControlStage<CadastroContatoController> telaCadastroCurso;
+    public ControlStage<ConfiguracoesController> telaConfiguracao;
+    public ControlStage<AgendaContatosController> telaAgendaContatos;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
