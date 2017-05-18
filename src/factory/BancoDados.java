@@ -30,8 +30,9 @@ public class BancoDados {
      * @return Informa se a operação ocorreu com sucesso ou não.
      */
     public static boolean save(Object objeto) {
-        Session sessao = HibernateUtil.getSessionFactory().openSession();
+        Session sessao = null;
         try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
             Transaction transacao = sessao.beginTransaction();
             sessao.save(objeto);
             transacao.commit();
