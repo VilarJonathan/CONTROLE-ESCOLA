@@ -68,7 +68,7 @@ public class ConfiguracoesController extends Inicializador {
                 }
             }
         } else {
-            DialogFX.showMessage("Verifique os campos! Obs:Somente o campo senha não é obrigátorio", "Falta Preencher Campos", DialogType.WARNING);
+            DialogFX.showMessage("Verifique os campos! Obs:Somente o campo senha não é obrigatorio!", "Falta Preencher Campos", DialogType.WARNING);
         }
     }
 
