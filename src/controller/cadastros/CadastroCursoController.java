@@ -5,6 +5,7 @@
  */
 package controller.cadastros;
 
+import controller.HomeController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -16,6 +17,8 @@ import jeanderson.controller.util.MaskFormatter;
 import jeanderson.controller.util.MaskType;
 import model.Curso;
 import factory.BancoDados;
+import jeanderson.controller.control.ControlStage;
+import util.Log;
 
 /**
  *
@@ -48,7 +51,7 @@ public class CadastroCursoController extends Inicializador {
             curso.setNome(this.txtNome.getText().trim());
             curso.setCarga(Integer.parseInt(this.txtCarga.getText()));
             //salva no banco de dados e verifica se deu certo, se deu certo então retorna true, se deu erro retorna false.
-            if (BancoDados.salvar(curso)) {
+            if (BancoDados.save(curso)) {
                 //exibi uma mensagem falando que deu certo.
                 DialogFX.showMessage("Curso adicionado com sucesso", "Sucesso!", DialogType.SUCESS);
                 //limpar os campos, pois não queremos adicionar o mesmo curso denovo né?
@@ -78,4 +81,18 @@ public class CadastroCursoController extends Inicializador {
         return true;
     }
 
+    @FXML
+    public void actionLimpar(){
+        this.clearCampos();
+    }
+    
+    @FXML
+    public void actionCancelar(){
+        try {
+            ControlStage<HomeController> controlHome = ControlStage.getAllSeeControl(HomeController.class);
+            controlHome.getController().telaCadastroCurso.getStage().close();
+        } catch (Exception ex) {
+            Log.salvaLogger(getClass().getName(), "actionCancelar()", ex);
+        }
+    }
 }
