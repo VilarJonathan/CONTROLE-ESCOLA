@@ -95,8 +95,8 @@ public class AgendaContatosController extends Inicializador {
         Task<ObservableList<Contato>> task = new Task<ObservableList<Contato>>() {
             @Override
             protected ObservableList<Contato> call() throws Exception {
-                cbCursosPesquisa.setItems(BancoDados.pegarTodosDados("curso"));
-                return BancoDados.pegarTodosDados("contato");
+                cbCursosPesquisa.setItems(BancoDados.queryAll("curso"));
+                return BancoDados.queryAll("contato");
             }
 
             @Override
