@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import jeanderson.controller.componentes.Inicializador;
 import jeanderson.controller.control.ControlStage;
 import jeanderson.controller.util.DialogFX;
+import jeanderson.controller.util.DialogType;
 import model.ConfigHibernateXML;
 import org.hibernate.HibernateException;
 import util.HibernateUtil;
@@ -48,22 +49,26 @@ public class ConfiguracoesController extends Inicializador {
 
     @FXML
     public void actionSalvar() {
-        this.hibernateConfig.getSessionFactory().setUrlConfig(this.txtNomeDoBanco.getText().trim(), txtEndereco.getText().trim(), txtPorta.getText().trim());
-        this.hibernateConfig.getSessionFactory().setUsername(this.txtUsuario.getText().trim());
-        this.hibernateConfig.getSessionFactory().setPassword(this.txtSenha.getText().trim());
-        this.xml.salvarConfig(this.hibernateConfig);
-        if (DialogFX.showConfirmation("Configurações Salvas! É necessário reiniciar para que tenha efeito!\n Deseja fechar agora?", "Necessário Reinicialização.")) {
-            
-            try {
-                ControlStage<HomeController> controlHome = ControlStage.getAllSeeControl(HomeController.class);
-                controlHome.getStage().close();
-                HibernateUtil.getSessionFactory().close();
-            } catch (Exception ex) {
-                Log.salvaLogger(getClass().getName(), "actionCancelar()", ex);
-            }catch(NoClassDefFoundError e){
-                Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, e);
-                System.exit(0);
+        if (verificarCampos()) {
+            this.hibernateConfig.getSessionFactory().setUrlConfig(this.txtNomeDoBanco.getText().trim(), txtEndereco.getText().trim(), txtPorta.getText().trim());
+            this.hibernateConfig.getSessionFactory().setUsername(this.txtUsuario.getText().trim());
+            this.hibernateConfig.getSessionFactory().setPassword(this.txtSenha.getText().trim());
+            this.xml.salvarConfig(this.hibernateConfig);
+            if (DialogFX.showConfirmation("Configurações Salvas! É necessário reiniciar para que tenha efeito!\nDeseja fechar agora?", "Necessário Reinicialização.")) {
+
+                try {
+                    ControlStage<HomeController> controlHome = ControlStage.getAllSeeControl(HomeController.class);
+                    controlHome.getStage().close();
+                    HibernateUtil.getSessionFactory().close();
+                } catch (Exception ex) {
+                    Log.salvaLogger(getClass().getName(), "actionCancelar()", ex);
+                } catch (NoClassDefFoundError e) {
+                    Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, e);
+                    System.exit(0);
+                }
             }
+        } else {
+            DialogFX.showMessage("Verifique os campos! Obs:Somente o campo senha não é obrigátorio", "Falta Preencher Campos", DialogType.WARNING);
         }
     }
 
@@ -85,5 +90,21 @@ public class ConfiguracoesController extends Inicializador {
     public void carregarConfiguracoes() {
         this.xml = new ConfigHibernateXML();
         this.hibernateConfig = xml.getConfigXMl();
+    }
+
+    private boolean verificarCampos() {
+        if (this.txtNomeDoBanco.getText().trim().isEmpty()) {
+            return false;
+        }
+        if (this.txtEndereco.getText().trim().isEmpty()) {
+            return false;
+        }
+        if (this.txtPorta.getText().isEmpty()) {
+            return false;
+        }
+        if (this.txtUsuario.getText().trim().isEmpty()) {
+            return false;
+        }
+        return false;
     }
 }
