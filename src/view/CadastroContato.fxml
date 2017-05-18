@@ -25,7 +25,7 @@
       <DatePicker fx:id="dataDeRetorno" layoutX="297.0" layoutY="94.0" prefHeight="25.0" prefWidth="135.0" visible="false" />
       <Label fx:id="lbDataRetorno" layoutX="204.0" layoutY="98.0" text="Data de retorno" visible="false" />
       <Button layoutX="32.0" layoutY="342.0" mnemonicParsing="false" onAction="#actionSalvar" text="SALVAR" />
-      <Button layoutX="190.0" layoutY="342.0" mnemonicParsing="false" text="LIMPAR" />
-      <Button layoutX="339.0" layoutY="342.0" mnemonicParsing="false" text="CANCELAR" />
+      <Button layoutX="190.0" layoutY="342.0" mnemonicParsing="false" onAction="#actionLimpar" text="LIMPAR" />
+      <Button layoutX="339.0" layoutY="342.0" mnemonicParsing="false" onAction="#actionCancelar" text="CANCELAR" />
    </children>
 </AnchorPane>
