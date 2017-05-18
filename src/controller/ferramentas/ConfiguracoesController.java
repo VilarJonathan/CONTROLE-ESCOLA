@@ -105,6 +105,6 @@ public class ConfiguracoesController extends Inicializador {
         if (this.txtUsuario.getText().trim().isEmpty()) {
             return false;
         }
-        return false;
+        return true;
     }
 }
