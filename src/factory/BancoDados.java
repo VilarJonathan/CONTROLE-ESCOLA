@@ -29,7 +29,7 @@ public class BancoDados {
      * @param objeto Objeto a ser persistido.
      * @return Informa se a operação ocorreu com sucesso ou não.
      */
-    public static boolean salvar(Object objeto) {
+    public static boolean save(Object objeto) {
         Session sessao = HibernateUtil.getSessionFactory().openSession();
         try {
             Transaction transacao = sessao.beginTransaction();
@@ -45,17 +45,41 @@ public class BancoDados {
     }
 
     /**
+     *  Faz um update no banco. Obs: é necessario que o objeto passado tenho o mesmo ID do objeto que vai ser atualizado no banco.
+     * @param objeto
+     * @return Informa se a operação ocorreu com sucesso ou não.
+     */
+    public static boolean update(Object objeto) {
+        Session sessao = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            Transaction transacao = sessao.beginTransaction();
+            sessao.update(objeto);
+            transacao.commit();
+            return true;
+        } catch (HibernateException ex) {
+            Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }finally{
+            sessao.close();
+        }
+
+    }
+
+    /**
      * Retorna uma Lista de todos os dados de uma, ou mais Tabelas.
+     *
      * @param className Informe o nome da Classe que persiste os dados no banco.
      * @return Uma lista com os dados retornados. Obs: pode ser vazia.
      */
-    public static ObservableList pegarTodosDados(String className) {
-        Session sessao = HibernateUtil.getSessionFactory().openSession();
+    public static ObservableList queryAll(String className) {
+        Session sessao = null;
         try {
-            Transaction transacao = sessao.beginTransaction();
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
             List lista = sessao.createQuery("FROM " + StringUtil.toUpperCaseFirst(className)).list();
             ObservableList lista_pronta = FXCollections.observableList(lista);
-            return lista_pronta;            
+            return lista_pronta;
         } catch (HibernateException ex) {
             Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
             return FXCollections.observableArrayList();
