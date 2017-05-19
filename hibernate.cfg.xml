@@ -7,7 +7,7 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/escola?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;connectionCollation=utf8_general_ci</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
-    <property name="hibernate.connection.password"></property>
+    <property name="hibernate.connection.password">jean1023x</property>
     <mapping class="model.Contato"/>
     <mapping class="model.Curso"/>
   </session-factory>
