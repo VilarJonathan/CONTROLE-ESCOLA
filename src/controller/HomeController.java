@@ -5,8 +5,6 @@ import controller.cadastros.CadastroContatoController;
 import controller.registros.AgendaContatosController;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import jeanderson.controller.componentes.Inicializador;
 import jeanderson.controller.control.ControlStage;
@@ -32,6 +30,7 @@ public class HomeController extends Inicializador {
         try {
             this.telaCadastro = ControlStage.newBuilder()
                     .addClassController(new CadastroContatoController())
+                    .addTitleStage("Cadastro de Contatos")
                     .addNameFromFXML("CadastroContato").build();
             this.telaCadastroCurso = new ControlStageBuilder<>()
                     .addClassController(new CadastroContatoController())
