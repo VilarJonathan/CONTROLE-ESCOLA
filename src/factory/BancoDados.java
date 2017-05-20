@@ -38,6 +38,7 @@ public class BancoDados {
             transacao.commit();
             return true;
         } catch (HibernateException | NoClassDefFoundError ex) {
+            Log.salvaLogger(BancoDados.class.getName(), "save()", ex.getMessage());
             Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         } finally {
@@ -58,7 +59,8 @@ public class BancoDados {
             sessao.update(objeto);
             transacao.commit();
             return true;
-        } catch (HibernateException | NoClassDefFoundError ex) {
+        } catch (HibernateException | NoClassDefFoundError ex) {            
+            Log.salvaLogger(BancoDados.class.getName(), "update()", ex.getMessage());
             Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }finally{
@@ -82,6 +84,7 @@ public class BancoDados {
             ObservableList lista_pronta = FXCollections.observableList(lista);
             return lista_pronta;
         } catch (HibernateException | NoClassDefFoundError ex) {
+            Log.salvaLogger(BancoDados.class.getName(), "queryAll()", ex.getMessage());
             Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
             return FXCollections.observableArrayList();
         } finally {
@@ -98,7 +101,8 @@ public class BancoDados {
             sessao.beginTransaction();
             sessao.close();
             return true;
-        }catch(HibernateException | NoClassDefFoundError ex){
+        }catch(HibernateException | NoClassDefFoundError ex){            
+            Log.salvaLogger(BancoDados.class.getName(), "inicializar()", ex.getMessage());
             Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
