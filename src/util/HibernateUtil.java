@@ -6,6 +6,8 @@
 package util;
 
 import java.io.File;
+import jeanderson.controller.util.DialogFX;
+import jeanderson.controller.util.DialogType;
 import org.hibernate.HibernateException;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.SessionFactory;
@@ -29,8 +31,9 @@ public class HibernateUtil {
 
         } catch (HibernateException ex) {
             // Log the exception. 
+            Log.salvaLogger(HibernateUtil.class.getName(), "sessionFactory", ex);
             System.err.println("Initial SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
+            throw new ExceptionInInitializerError(ex);            
         }
     }
 
