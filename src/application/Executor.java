@@ -9,6 +9,7 @@ import controller.HomeController;
 import factory.BancoDados;
 import javafx.application.Application;
 import javafx.concurrent.Task;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import jeanderson.controller.control.ControlStage;
 import jeanderson.controller.control.ControlStageBuilder;
@@ -56,8 +57,15 @@ public class Executor extends Application {
             }
 
             @Override
+            protected void succeeded() {
+                super.succeeded();
+                controlHome.getController().atualizarStatus("Iniciado com sucesso", Color.LAWNGREEN);
+            }         
+            
+
+            @Override
             protected void failed() {
-                DialogFX.showMessage("Houve um erro ao iniciar o banco de dados. Por favor verifique as configurações e olhe o log.txt", "Erro ao iniciar o banco de dados", DialogType.ERRO);
+                controlHome.getController().atualizarStatus("Erro na conexao com BD", Color.RED);
             }
             
         };
