@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -39,8 +40,11 @@
    <bottom>
       <Pane prefHeight="87.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <Circle fx:id="circuloStatus" fill="#ecf80b" layoutX="660.0" layoutY="63.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
-            <Label fx:id="lbStatus" layoutX="670.0" layoutY="55.0" prefHeight="17.0" prefWidth="129.0" text="Iniciando conexão" />
+            <Circle fx:id="circuloStatus" fill="#f2ff00" layoutX="638.0" layoutY="64.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="lbStatus" layoutX="648.0" layoutY="56.0" prefHeight="17.0" prefWidth="153.0" text="Iniciando conexão">
+               <padding>
+                  <Insets left="2.0" />
+               </padding></Label>
          </children>
       </Pane>
    </bottom>
