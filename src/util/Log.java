@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import jeanderson.controller.util.DialogFX;
-import jeanderson.controller.util.DialogType;
 
 /**
  * Classe responsável por salvar log em forma de arquivo de texto.
@@ -29,7 +27,6 @@ public class Log {
     /**
      * Método pega a exceção lançada, e grava em um arquivo de Texto. e também
      * exibi um Dialog informando o erro.
-     *Obs: Não funciona dentro de uma Thread.
      * @param className Nome da Classe de Exceção.
      * @param whereException Nome do método ou código onde ocorreu a exception.
      * @param ex Exceção lançada.
@@ -42,6 +39,34 @@ public class Log {
             msg.add("Ocorreu uma exceção na data: " + dataDoOcorrido);
             msg.add("Na Classe: " + className);
             msg.add("Motivo: " + ex.getMessage());
+            msg.add("Onde: " + whereException);
+            msg.add("");
+
+            File arquivo = new File("log.txt");
+            if (!arquivo.exists()) {
+                arquivo.createNewFile();
+            }
+
+            Files.write(Paths.get(arquivo.getPath()), msg, StandardOpenOption.APPEND);
+        } catch (IOException ex1) {
+            Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex1);
+        }
+    }
+    
+    /**
+     * Método pega a exceção lançada, e grava em um arquivo de Texto. e também
+     * exibi um Dialog informando o erro.
+     * @param className Nome da Classe de Exceção.
+     * @param whereException Nome do método ou código onde ocorreu a exception.
+     * @param exception Exceção lançada.
+     */
+     public static void salvaLogger(String className, String whereException, String exception) {
+        try {
+            String dataDoOcorrido = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy 'ás' HH:mm"));
+            List<String> msg = new ArrayList<>();
+            msg.add("Ocorreu uma exceção na data: " + dataDoOcorrido);
+            msg.add("Na Classe: " + className);
+            msg.add("Motivo: " + exception);
             msg.add("Onde: " + whereException);
             msg.add("");
 
