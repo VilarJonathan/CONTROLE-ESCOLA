@@ -19,21 +19,21 @@ import org.hibernate.SessionFactory;
 public class HibernateUtil {
 
     private static final SessionFactory sessionFactory;
-    
+
     static {
         try {
             // Create the SessionFactory from standard (hibernate.cfg.xml) 
-            // config file.
+            // config file
             File arquivoConfig = new File("hibernate.cfg.xml");
             sessionFactory = new Configuration().configure(arquivoConfig).buildSessionFactory();
-            
+
         } catch (HibernateException ex) {
             // Log the exception. 
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
-    
+
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
