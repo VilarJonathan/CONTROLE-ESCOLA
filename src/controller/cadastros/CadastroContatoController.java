@@ -22,8 +22,6 @@ import jeanderson.controller.util.MaskFormatter;
 import jeanderson.controller.util.MaskType;
 import model.Curso;
 import factory.BancoDados;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.scene.control.TextArea;
 import jeanderson.controller.control.ControlStage;
 import jeanderson.controller.util.DialogFX;
@@ -80,12 +78,13 @@ public class CadastroContatoController extends Inicializador {
         this.checkRetorno.setSelected(false);
         this.txtNome.setText("");
         this.txtTelefone.setText("");
-        this.txtObservacao.setText("");
-        //limpa o comboBox para adicionar novas dados.
-        this.cbCursos.getSelectionModel().clearSelection();
-        this.cbSituacao.getSelectionModel().clearSelection();
+        this.txtObservacao.setText("");        
         actionCheckRetornar();
         this.isEditMode = false;
+        //limpa o comboBox para adicionar novas dados.
+        this.cbSituacao.getSelectionModel().clearSelection();
+        //o comboBox bugou, então tem q fazer isto para limpar a lista.
+        this.cbCursos.setValue(null);
     }
 
     /**
@@ -114,6 +113,7 @@ public class CadastroContatoController extends Inicializador {
 
     @FXML
     public void actionSalvar() {
+        System.out.println("salvar: " + isEditMode);
         if (!this.isEditMode) {
             if (this.verificarCampos()) {
                 Contato contato = new Contato();
