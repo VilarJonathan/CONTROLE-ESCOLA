@@ -6,6 +6,10 @@ import controller.registros.AgendaContatosController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import jeanderson.controller.componentes.Inicializador;
 import jeanderson.controller.control.ControlStage;
 import jeanderson.controller.control.ControlStageBuilder;
@@ -17,6 +21,11 @@ import util.Log;
  * @author Jonathan Vilar
  */
 public class HomeController extends Inicializador {
+    //componentes da TelaHome.
+    @FXML
+    private Circle circuloStatus;
+    @FXML
+    private Label lbStatus;
 
     //alteradas para public para outras janelas terem acesso.
     public ControlStage<CadastroContatoController> telaCadastro;
@@ -109,4 +118,13 @@ public class HomeController extends Inicializador {
         }
     }
 
+    /**
+     * Método altera o texto do label ao lado do circle, assim como a cor do circle também.
+     * @param msg
+     * @param color 
+     */
+    public void atualizarStatus(String msg, Paint color){
+        this.lbStatus.setText(msg);
+        this.circuloStatus.setFill(color);
+    }
 }
