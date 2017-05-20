@@ -16,6 +16,7 @@ import jeanderson.controller.util.DialogFX;
 import jeanderson.controller.util.DialogType;
 import org.hibernate.HibernateException;
 import util.HibernateUtil;
+import util.Log;
 
 /**
  *
@@ -55,10 +56,8 @@ public class Executor extends Application {
             }
 
             @Override
-            protected void succeeded() {
-                if(!getValue()){
-                    DialogFX.showMessage("Houve um erro ao iniciar o banco de dados", "Erro ao iniciar Banco de Dados", DialogType.ERRO);
-                }
+            protected void failed() {
+                DialogFX.showMessage("Houve um erro ao iniciar o banco de dados. Por favor verifique as configurações e olhe o log.txt", "Erro ao iniciar o banco de dados", DialogType.ERRO);
             }
             
         };
@@ -78,15 +77,15 @@ public class Executor extends Application {
                    return true;
                }catch(HibernateException ex){
                    System.err.println(ex);
+                   Log.salvaLogger(Executor.class.getName(), "fecharConexaoBanco()", ex);
                    return false;
                }
             }
 
             @Override
-            protected void succeeded() {
-                if(!getValue()){
-                    System.err.println("Houve um erro ao fechar conexao com o banco de dados.");
-                }
+            protected void failed() {
+                super.failed();
+                System.err.println("Houve um erro ao fechar a conexao com o banco de dados.");
             }
             
         };
